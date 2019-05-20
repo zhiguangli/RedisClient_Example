@@ -28,7 +28,7 @@ public:
     virtual ~AbstractReplyType();
 
     virtual std::string toString() = 0;
-    virtual ParseResult feed(char c) = 0;
+    virtual ParseResult getChar(char c) = 0;
 
     //factory method
     static std::shared_ptr<AbstractReplyType> createType(char c);
@@ -63,7 +63,7 @@ public:
         return result;
     }
 
-    ParseResult feed(char c) override;
+    ParseResult getChar(char c) override;
 
 private:
     int itemCount_;
@@ -88,7 +88,7 @@ public:
         return content_;
     }
 
-    ParseResult feed(char c) override;
+    ParseResult getChar(char c) override;
 
 protected:
     ParseStatus status_ = ParseStatus::ParsingString;
@@ -112,7 +112,7 @@ public:
 
         return std::string("\"") + content_ + std::string("\"");
     }
-    ParseResult feed(char c) override;
+    ParseResult getChar(char c) override;
 
 private:
     ParseStatus status_ = ParseStatus::ExpectLength;
@@ -137,7 +137,7 @@ public:
     {
         return std::string("(integer) ") + std::to_string(number_);
     }
-    ParseResult feed(char c) override;
+    ParseResult getChar(char c) override;
 
 private:
     int number_ = -1;

@@ -20,9 +20,11 @@ int main()
             {
                 case ParseResult::Error:
                     // reply error string to consloe.
+                    std::cout << "parse error" << std::endl;
                     break;
                 case ParseResult::Finished:
                     // reply to console.
+                    std::cout << replyType->toString();
                     break;
             }
         }

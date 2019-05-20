@@ -26,7 +26,7 @@ std::shared_ptr<AbstractReplyType> AbstractReplyType::createType(char c)
 }
 
 
-ParseResult ArraysType::feed(char c)
+ParseResult ArraysType::getChar(char c)
 {
     switch(status_)
     {
@@ -81,7 +81,7 @@ ParseResult ArraysType::feed(char c)
         }
         case ParseStatus::ParsingSubItemContent:
         {
-            ParseResult pr = currentItem_->feed(c);
+            ParseResult pr = currentItem_->getChar(c);
             if(pr == ParseResult::Error)
             {
                 return ParseResult::Error;
@@ -101,7 +101,7 @@ ParseResult ArraysType::feed(char c)
     }
 }
 
-ParseResult OneLineStringType::feed(char c)
+ParseResult OneLineStringType::getChar(char c)
 {
     switch(status_)
     {
@@ -136,9 +136,9 @@ ParseResult OneLineStringType::feed(char c)
     }
 }
 
-ParseResult IntegersType::feed(char c)
+ParseResult IntegersType::getChar(char c)
 {
-    ParseResult pr = OneLineStringType::feed(c);
+    ParseResult pr = OneLineStringType::getChar(c);
     if(pr == ParseResult::Finished)
     {
         number_ = std::stoi(content_);

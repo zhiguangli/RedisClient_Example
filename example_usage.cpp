@@ -16,7 +16,7 @@ int main()
     {
         for(auto i = 1; i < content.size(); ++i)
         {
-            switch(replyItem->feed(content.at(i)))
+            switch(replyItem->getChar(content.at(i)))
             {
                 case ParseResult::Error:
                     // reply error string to consloe.

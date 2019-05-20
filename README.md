@@ -1,2 +1,2 @@
 # RedisClient_Example
-This is a console for redis client protocol parsing.
+Redis客户端 协议解析

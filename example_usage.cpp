@@ -8,15 +8,15 @@ using namespace std;
 int main()
 {
 
-    std::string content = "*5\r\n:1\r\n:2\r\n:3\r\n:4\r\n$6\r\nfoobar\r\n";
+    std::string replyString = "*5\r\n:1\r\n:2\r\n:3\r\n:4\r\n$6\r\nfoobar\r\n";
 
-    auto replyType = AbstractReplyType::createType(content.at(0));
+    auto replyType = AbstractReplyType::createType(replyString.at(0));
 
     if(!replyType)
     {
-        for(auto i = 1; i < content.size(); ++i)
+        for(auto i = 1; i < replyString.size(); ++i)
         {
-            switch(replyType->getChar(content.at(i)))
+            switch(replyType->getChar(replyString.at(i)))
             {
                 case ParseResult::Error:
                     // reply error string to consloe.

@@ -10,13 +10,13 @@ int main()
 
     std::string content = "*5\r\n:1\r\n:2\r\n:3\r\n:4\r\n$6\r\nfoobar\r\n";
 
-    auto replyItem = AbstractReplyType::createType(content.at(0));
+    auto replyType = AbstractReplyType::createType(content.at(0));
 
-    if(!replyItem)
+    if(!replyType)
     {
         for(auto i = 1; i < content.size(); ++i)
         {
-            switch(replyItem->getChar(content.at(i)))
+            switch(replyType->getChar(content.at(i)))
             {
                 case ParseResult::Error:
                     // reply error string to consloe.

@@ -147,7 +147,7 @@ ParseResult IntegersType::getChar(char c)
     return pr;
 }
 
-ParseResult BulkStringType::feed(char c)
+ParseResult BulkStringType::getChar(char c)
 {
     switch(status_)
     {
